@@ -41,8 +41,7 @@
           specialArgs = { inherit inputs outputs; };
           modules = [ 
 		    ./hosts/loligo 
-			niri.nixosModules.niri 
-			{
+			niri.nixosModules.niri {
 			  programs.niri.enable = true;
 			}
 		  ];
