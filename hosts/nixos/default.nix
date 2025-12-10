@@ -1,7 +1,6 @@
 { config, pkgs, inputs, outputs, lib, ...}: {
   imports = [
     ../common
-    ./hardware-configuration.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 
@@ -64,12 +63,7 @@
   };
 
   services = {
-    # sshd.enable = true;
-    # openssh = {
-    #   enable = true;
-    #   settings.PermitRootLogin = "no";
-    #   allowSFTP = true;
-    # };
+    openssh.enable = true;
   };
 
   nix.settings.trusted-users = [ "root" "sqibo" ];

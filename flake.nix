@@ -33,17 +33,12 @@
       ];
       forAllSystems = nixpkgs.lib.genAttrs systems;
     in {
-      packages =
-        forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
-      overlays = import ./overlays { inherit inputs; };
       nixosConfigurations = {
         loligo = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
           modules = [ 
-		    ./hosts/loligo 
-			niri.nixosModules.niri {
-			  programs.niri.enable = true;
-			}
+		    ./hosts/nixos/loligo 
+			niri.nixosModules.niri { programs.niri.enable = true; }
 		  ];
         };
       };
