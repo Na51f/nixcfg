@@ -34,11 +34,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  programs.zsh = {
-    enable = true;
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = false;
-  };
+  programs.zsh.enable = true;
 
   environment = {
     systemPackages = with pkgs; [

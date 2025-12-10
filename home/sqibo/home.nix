@@ -2,9 +2,10 @@
 # 
 # manager init ./
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }: {
+  
+  imports = [ ./terminal.nix ];
 
-{
   home = {
     # Manager needs a bit of information about you and the paths it should
     # manage.
