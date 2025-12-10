@@ -26,6 +26,7 @@
 
 	alacritty.enable = true;
 	ghostty.enable = true;
+
 	zoxide = {
 	  enable = true;
 	  enableZshIntegration = true;
