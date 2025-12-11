@@ -14,6 +14,8 @@
   time.timeZone = "America/Toronto";
   i18n.defaultLocale = "en_US.UTF-8";
 
+  programs.zsh.enable = true;
+
   users.users = {
     sqibo = {
       isNormalUser = true;
@@ -22,6 +24,7 @@
       packages = [
         inputs.home-manager.packages.${pkgs.system}.default
       ];
+	  shell = pkgs.zsh;
     };
   };
 
@@ -34,19 +37,11 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  programs.zsh.enable = true;
-
   environment = {
     systemPackages = with pkgs; [
-      alacritty
-      code-cursor-fhs
       firefox
       fuzzel
-      fzf
-      ghostty
       git
-      neovim
-      tree
       vim
       waybar
       wl-clipboard

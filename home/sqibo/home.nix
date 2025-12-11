@@ -4,7 +4,7 @@
 
 { config, lib, pkgs, ... }: {
   
-  imports = [ ./terminal.nix ];
+  imports = [];
 
   home = {
     # Manager needs a bit of information about you and the paths it should

@@ -1,5 +1,5 @@
 { config, lib, outputs, pkgs, ... }: {
-  imports = [  ];
+  imports = [ ./terminal.nix ];
   nixpkgs = {
     # You can add overlays here
     overlays = [

@@ -17,8 +17,8 @@
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
-
 	niri.url = "github:sodiboo/niri-flake";
+	neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   outputs = { self, home-manager, nixpkgs, niri, ... }@inputs:

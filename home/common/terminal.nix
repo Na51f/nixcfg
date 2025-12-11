@@ -1,7 +1,8 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, lib, inputs, ... }: {
 
   home.packages = with pkgs; [
     # CLI tools
+	clang
 	fzf
 	ripgrep
 	tree
@@ -22,6 +23,12 @@
 		update = "sudo nixos-rebuild switch --flake ~/Dev/nix#$(hostname)";
 		golden = "echo 0.61803398875";
 	  };
+	};
+
+	
+	neovim = {
+	  enable = true;
+	  package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default; 
 	};
 
 	alacritty.enable = true;
