@@ -1,5 +1,5 @@
 { config, pkgs, lib, inputs, ... }: {
   imports = [ 
-    ./rice/terminal.nix
+    ./.
   ];
 }
