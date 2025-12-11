@@ -17,9 +17,6 @@
 	  enable = true;
 	  package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default; 
 	};
-
-	alacritty.enable = true;
-
   }; 
 
   users.defaultUserShell = pkgs.zsh;

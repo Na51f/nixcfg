@@ -1,7 +1,7 @@
 { config, pkgs, inputs, outputs, lib, ...}: {
   imports = [
     ../common
-    inputs.home-manager.nixosModules.home-manager
+	../../modules/audio.nix
   ];
 
   boot.loader.systemd-boot.enable = true; # (for UEFI systems only)
@@ -20,6 +20,11 @@
   };
 
   nixpkgs.config.allowUnfree = true;
+
+  hardware.bluetooth = {
+    enable = true;
+	powerOnBoot = true;
+  };
 
   environment = {
     systemPackages = with pkgs; [
