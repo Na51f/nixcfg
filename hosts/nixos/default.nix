@@ -6,10 +6,7 @@
 
   boot.loader.systemd-boot.enable = true; # (for UEFI systems only)
 
-  networking = {
-    hostName = "loligo";
-    networkmanager.enable = true;
-  };
+  networking.networkmanager.enable = true;
 
   time.timeZone = "America/Toronto";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -20,7 +17,7 @@
     sqibo = {
       isNormalUser = true;
       description = "sqibo";
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [ "wheel" "networkmanager" "audio" ];
       packages = [
         inputs.home-manager.packages.${pkgs.system}.default
       ];
@@ -42,7 +39,6 @@
       firefox
       fuzzel
       git
-      vim
       waybar
       wl-clipboard
     ];
