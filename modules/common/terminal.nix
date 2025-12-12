@@ -3,11 +3,13 @@
   environment = {
 	systemPackages = with pkgs; [
 	  clang
+	  cursor-cli
 	  fastfetch
 	  fzf
 	  git
 	  ghostty
 	  ripgrep
+	  tmux
 	  tree
 	  vim
     ];
