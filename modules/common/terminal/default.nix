@@ -1,5 +1,4 @@
 { config, pkgs, lib, inputs, ... }: {
-  myNixCats = import ./nvim { inherit inputs; };
 
   environment = {
     systemPackages = with pkgs; [
@@ -32,4 +31,7 @@
   };
 
   users.defaultUserShell = pkgs.zsh;
+
+  # Neovim Nix-Lua integration
+  myNixCats = import ./nvim { inherit inputs; };
 }
