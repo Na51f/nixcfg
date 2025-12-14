@@ -3,15 +3,18 @@
     The Nix configuration flake for the Cephalode family of systems.
 
     This flake is based off the configuration of m3tam3re:
-	X: https://twitter.com/@m3tam3re
-    YouTube: https://www.youtube.com/@m3tam3re
+    - X: https://twitter.com/@m3tam3re
+    - YouTube: https://www.youtube.com/@m3tam3re
   '';
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    nixCats.url = "github:BirdeeHub/nixCats-nvim";
+    nvim = {
+      url = "path:./modules/common/terminal/nixCats";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, home-manager, nixpkgs, ... }@inputs:
