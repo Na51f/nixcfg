@@ -1,4 +1,5 @@
 { config, pkgs, lib, inputs, ... }: {
+  myNixCats = import ./nvim { inherit inputs; };
 
   environment = {
     systemPackages = with pkgs; [
