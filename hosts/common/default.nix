@@ -7,7 +7,7 @@
     sqibo = {
       isNormalUser = true;
       description = "Main user.";
-      extraGroups = [ "wheel" "networkmanager" "audio" ];
+      extraGroups = [ "wheel" "networkmanager" "audio" "seat" ];
     };
   };
 

@@ -1,8 +1,10 @@
 { config, pkgs, lib, inputs, ... }: {
+  imports = [
+    ./languages.nix
+  ];
 
   environment = {
     systemPackages = with pkgs; [
-      clang
       cursor-cli
       fastfetch
       fzf
@@ -14,11 +16,6 @@
       unzip
       vim
       wget
-
-      # Neovim Language Servers
-      lua-language-server
-      typescript-language-server
-      nil # Nix language server
     ];
     variables = {
       XDG_CONFIG_HOME = "$HOME/.config";
