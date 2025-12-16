@@ -9,7 +9,7 @@
       fastfetch
       fzf
       git
-      ghostty
+      kitty
       ripgrep
       tmux
       tree
@@ -22,15 +22,4 @@
       ZDOTDIR = "$XDG_CONFIG_HOME/zsh";
     };
   };
-
-  programs = {
-    zsh.enable = true;
-
-    neovim = {
-      enable = true;
-      package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default; 
-    };
-  };
-
-  users.defaultUserShell = pkgs.zsh;
 }

@@ -1,15 +1,5 @@
 { config, pkgs, ... }: {
-  nix-homebrew.darwinModules.nix-homebrew {
-    nix-homebrew = {
-      enable = true;
-      # enableRosetta = true;
-      user = "sqibo";
-      autoMigrate = true;
-    };
-  };
-
-
-1 system.activationScripts.applications.text = let
+  system.activationScripts.applications.text = let
     env = pkgs.buildEnv {
       name = "system-applications";
       paths = config.environment.systemPackages;

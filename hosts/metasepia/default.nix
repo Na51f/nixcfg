@@ -1,12 +1,13 @@
 { self, config, pkgs, inputs, outputs, lib, ... }: {
   imports = [
-    ./hardware-configuration.nix
     ../common
-    ../../../modules/macos
+    ../../modules/macos
   ];
 
   networking.hostName = "metasepia";
   nixpkgs.hostPlatform = "aarch64-darwin"; # Architecture
+
+  nix.package = pkgs.nixVersions.nix_2_30;
 
   system = {
     primaryUser = "sqibo"; # Sets user

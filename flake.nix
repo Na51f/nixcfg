@@ -30,7 +30,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nix-darwin, nix-homebrew, homebrew-core, homebrew-cask, ... }@inputs:
+  outputs = { self, nixpkgs, nix-darwin, nix-homebrew, homebrew-core, homebrew-cask, nvim, ... }@inputs:
     let
       inherit (self) outputs;
       systems = [
@@ -55,11 +55,22 @@
         };
       };
 
-      darwinConfigurations."metasepia" = nix-darwin.lib.darwinSystem {
-        specialArgs = { inherit inputs outputs; };
-        modules = [
-          ./hosts/metasepia
-        ];
+      darwinConfigurations = {
+        metasepia = nix-darwin.lib.darwinSystem {
+          specialArgs = { inherit self inputs outputs; };
+          modules = [
+            ./hosts/metasepia
+            nix-homebrew.darwinModules.nix-homebrew
+            {
+              nix-homebrew = {
+                enable = true;
+                # enableRosetta = true;
+                user = "sqibo";
+                autoMigrate = true;
+              };
+            }
+          ];
+        };
       };
     };
 }
