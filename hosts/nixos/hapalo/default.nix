@@ -7,8 +7,5 @@
 
   networking.hostName = "hapalo";
 
-  environment.systemPackages = with pkgs; [
-  ];
-
   system.stateVersion = "25.05"; # Do not change
 }
