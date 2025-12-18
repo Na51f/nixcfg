@@ -1,14 +1,10 @@
 { config, pkgs, inputs, ... }:
 {
-  nixpkgs.config.allowUnfree = true; # Allow closed source software
-
-  # Packages from Nix
   environment.systemPackages = with pkgs; [
     aerospace
     mkalias # Allows apps in /Applications/Nix to show up in Raycast
     neovim
   ];
-
   homebrew = {
     taps = [
     ];
