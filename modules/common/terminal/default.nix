@@ -11,6 +11,7 @@
       fd
       fzf
       git
+      killall
       kitty
       ripgrep
       tmux
