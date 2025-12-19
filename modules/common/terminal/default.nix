@@ -5,13 +5,16 @@
 
   environment = {
     systemPackages = with pkgs; [
+      btop
       cursor-cli
       fastfetch
+      fd
       fzf
       git
       killall
       kitty
       ripgrep
+      tldr
       tmux
       tree
       unzip
