@@ -1,6 +1,7 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, inputs, lib, ... }:
+{
   imports = [
-    ./applications.nix
     ./homebrew.nix
+    ./applications.nix
   ];
 }

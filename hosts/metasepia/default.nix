@@ -1,17 +1,13 @@
-{ self, config, pkgs, inputs, outputs, lib, ... }: {
+{ config, pkgs, inputs, outputs, lib, ... }:
+{
   imports = [
-    ./hardware-configuration.nix
     ../common
-    ../../../modules/macos
+    ../../modules/macos
   ];
-
-  networking.hostName = "metasepia";
-  nixpkgs.hostPlatform = "aarch64-darwin"; # Architecture
 
   system = {
     primaryUser = "sqibo"; # Sets user
-    configurationRevision = self.rev or self.dirtyRev or null; # Sets git hash
-
+    configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null; # Sets git hash
     defaults = {
       dock = {
         autohide = true;
@@ -19,12 +15,11 @@
         orientation = "left";
         persistent-apps = [
         ];
-
-        scroll-to-open = true;	# Scroll on a dock app to show all windows
+        scroll-to-open = true; # Scroll on a dock app to show all windows
         show-recents = false;
       };
 
-      finder = { 
+      finder = {
         FXPreferredViewStyle = "clmv";
         FXEnableExtensionChangeWarning = false;
       };
@@ -37,7 +32,7 @@
       NSGlobalDomain.KeyRepeat = 2;
       LaunchServices.LSQuarantine = false;
     };
-
+    
     stateVersion = 6;
   };
 }

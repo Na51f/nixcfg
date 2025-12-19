@@ -1,31 +1,27 @@
-{ config, pkgs, ... }: {
-  nix-homebrew.darwinModules.nix-homebrew {
-    nix-homebrew = {
-      enable = true;
-      # enableRosetta = true;
-      user = "sqibo";
-      autoMigrate = true;
-    };
+{ config, pkgs, inputs, ... }:
+{
+  imports = [
+    inputs.nix-homebrew.darwinModules.nix-homebrew
+  ];
+
+  nix-homebrew = {
+    enable = true;
+    # enableRosetta = true;
+    user = "sqibo";
+    autoMigrate = true;
   };
 
+  homebrew = {
+    enable = true;
 
-1 system.activationScripts.applications.text = let
-    env = pkgs.buildEnv {
-      name = "system-applications";
-      paths = config.environment.systemPackages;
-      pathsToLink = "/Applications";
+    onActivation = {
+      autoUpdate = true;
+      # cleanup = "zap"; # Has issues with aerospace
+      upgrade = true;
     };
-  in
-    pkgs.lib.mkForce ''
-      # Set up applications.
-      echo "setting up /Applications..." >&2
-      rm -rf /Applications/Nix\ Apps
-      mkdir -p /Applications/Nix\ Apps
-      find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
-      while read -r src; do
-        app_name=$(basename "$src")
-        echo "copying $src" >&2
-        ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
-      done
-    '';
+    global = {
+      brewfile = true;
+    };
+  };
 }
+
