@@ -41,7 +41,8 @@
       inherit (inputs) 
         nixpkgs 
         nixpkgs-stable 
-        neovim-nightly-overlay;
+        neovim-nightly-overlay
+        noctalia;
     };
 
     darwinInputs = {
