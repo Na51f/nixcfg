@@ -25,6 +25,8 @@
   services = {
     openssh.enable = true;
     blueman.enable = true;
+    power-profiles-daemon.enable = true;
+    upower.enable = true;
   };
 
   users.users = {

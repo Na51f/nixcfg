@@ -29,25 +29,38 @@
     };
   };
 
-  outputs = { self, nixpkgs, nix-darwin, nix-homebrew, homebrew-core, homebrew-cask, ... }@inputs: let
+  outputs = inputs@{ self, nixpkgs, ... }:
+  let
     inherit (self) outputs;
-    systems = [
-      "x86_64-linux" # Laptop/Desktop
-      "aarch64-darwin" # Mac
-    ];
-    forAllSystems = nixpkgs.lib.genAttrs systems;
+
+    nixosInputs = {
+      inherit (inputs) 
+        nixpkgs 
+        nixpkgs-stable 
+        neovim-nightly-overlay;
+    };
+
+    darwinInputs = {
+      inherit (inputs)
+        nixpkgs
+        nix-darwin
+        nix-homebrew
+        homebrew-core
+        homebrew-cask
+        neovim-nightly-overlay;
+    };
   in {
     nixosConfigurations = {
       loligo = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs outputs; };
-        modules = [ 
+        specialArgs = { inherit outputs; inputs = nixosInputs; };
+        modules = [
           ./hosts/nixos/loligo
           ./modules/nixos/loligo
         ];
       };
 
       hapalo = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs outputs; };
+        specialArgs = { inherit outputs; inputs = nixosInputs; };
         modules = [
           ./hosts/nixos/hapalo
           ./modules/nixos/hapalo
@@ -55,20 +68,17 @@
       };
     };
 
-    darwinConfigurations =
-      let
-        metasepia = nix-darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          specialArgs = { inherit inputs outputs; };
-          modules = [
-            ./hosts/metasepia
-            ./modules/macos
-          ];
-        };
-      in
-      {
-        metasepia = metasepia;
-        "sqibo-mac" = metasepia; # alias for convenience (matches the previous nested-flake name)
+    darwinConfigurations = {
+      metasepia = inputs.nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        specialArgs = { inherit outputs; inputs = darwinInputs; };
+        modules = [
+          ./hosts/metasepia
+          ./modules/macos
+        ];
       };
+
+      "sqibo-mac" = self.darwinConfigurations.metasepia;
+    };
   };
 }
