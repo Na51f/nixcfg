@@ -1,4 +1,5 @@
-{ config, pkgs, lib, inputs, ... }: {
+{ config, pkgs, lib, inputs, ... }:
+{
   imports = [
     ./languages.nix
   ];
@@ -20,6 +21,8 @@
       unzip
       vim
       wget
+
+      inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
     ];
     variables = {
       XDG_CONFIG_HOME = "$HOME/.config";

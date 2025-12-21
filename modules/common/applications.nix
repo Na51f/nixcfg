@@ -1,7 +1,7 @@
 { inputs, config, pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     code-cursor
-    equibop
+    equicord
 
     inputs.zen-browser.packages."${system}".default
   ];
