@@ -1,6 +1,8 @@
-{ config, pkgs, ... }: {
+{ inputs, config, pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     code-cursor
-    discord
+    equibop
+
+    inputs.zen-browser.packages."${system}".default
   ];
 }

@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ inputs, config, pkgs, lib, ... }:
 {
   imports = [
     inputs.noctalia.nixosModules.default
