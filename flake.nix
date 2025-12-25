@@ -95,8 +95,6 @@
           ./modules/macos
         ];
       };
-
-      "sqibo-mac" = self.darwinConfigurations.metasepia;
     };
   };
 }
