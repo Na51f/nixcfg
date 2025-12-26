@@ -25,6 +25,7 @@
       tldr
       tree
       unzip
+      uwufetch
       vim
       wget
     ];
