@@ -13,6 +13,7 @@
 
   environment = {
     systemPackages = with pkgs; [
+      bat
       btop
       cursor-cli
       fastfetch
