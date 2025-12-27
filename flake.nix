@@ -68,7 +68,6 @@
 
           nvf
           neovim-nightly-overlay
-          nvf
           zen-browser
           ;
       };
