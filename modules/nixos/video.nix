@@ -18,7 +18,7 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
 
     prime =
-      lib.mkIf config.networking.hostName == "loligo" {
+      lib.mkIf (config.networking.hostName == "loligo") {
         offload = {
           enable = true;
           enableOffloadCmd = true;

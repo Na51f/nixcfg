@@ -5,12 +5,8 @@
   lib,
   ...
 }:
-let
-  # myNixCats = import ../../../../nvim { inherit inputs; };
-in
 {
   environment.systemPackages = with pkgs; [
-    # myNixCats.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # Language servers
