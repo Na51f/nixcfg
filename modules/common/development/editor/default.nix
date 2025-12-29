@@ -5,14 +5,9 @@ in {
     inputs.nixCats.nixosModules.default
   ];
   config = {
-    # this value, nixCats is the defaultPackageName you pass to mkNixosModules
-    # it will be the namespace for your options.
     nixCats = {
       enable = true;
-      # nixpkgs_version = inputs.nixpkgs;
-      # this will add an overlay for any plugins
-      # in inputs named "plugins-pluginName" to pkgs.neovimPlugins
-      # It will not apply to overall system, just nixCats.
+      nixpkgs_version = inputs.nixpkgs;
       addOverlays = [
         (utils.standardPluginOverlay inputs)
       ];
@@ -27,7 +22,11 @@ in {
       # for useage of this section, refer to :h nixCats.flake.outputs.categories
       categoryDefinitions.replace = ({ pkgs, settings, categories, extra, name, mkPlugin, ... }@packageDef: {
         lspsAndRuntimeDeps = {
-          general = [];
+          general = with pkgs; [
+            lua-language-server
+            nil
+            typescript-language-server
+          ];
         };
         startupPlugins = {
           general = [];
@@ -42,6 +41,9 @@ in {
           #     }
           #   )
           # ];
+          extra = with pkgs.vimPlugins; [
+            oil-nvim
+          ];
         };
         optionalPlugins = {
           general = [];
@@ -91,10 +93,8 @@ in {
             suffix-LD = true;
             wrapRc = true;
             # unwrappedCfgPath = "/path/to/config";
-            # IMPORTANT:
-            # your alias may not conflict with your other packages.
-            aliases = [ "nvim" ];
-            # neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.neovim;
+            aliases = [ "nvim" "vim" "vi" ];
+            neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.neovim;
           };
           # and a set of categories that you want
           # (and other information to pass to lua)
