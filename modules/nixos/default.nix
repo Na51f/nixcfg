@@ -7,14 +7,14 @@
 {
   imports = [
     ../common
+    ./devices
     ./niri.nix
-    ./kb.nix
-    ./audio.nix
-    ./video.nix
+    ./security.nix
   ];
 
   programs = {
     zsh.enable = true;
+    yazi.enable = true;
   };
 
   users.defaultUserShell = pkgs.zsh;
