@@ -24,7 +24,7 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  fileSystems."/mnt/games" =
+  fileSystems."/home/sqibo/games" =
     { device = "/dev/disk/by-uuid/b4da49af-d9fb-4382-8d7b-31ec7e612405";
       fsType = "ext4";
     };

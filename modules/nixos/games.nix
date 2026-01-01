@@ -6,6 +6,7 @@
     lutris
 
     protonup-qt # GUI for custom Proton versions
+    winetricks
   ];
 
   programs = {
