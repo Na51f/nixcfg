@@ -20,8 +20,8 @@
 
   hardware.graphics.enable32Bit = true; # Required for epic
 
-  # Sets up esync (speeds up games)
-  systemd.extraConfig = "DefaultLimitNOFILE=524288";
+  # Set up esync (speeds up games)
+  # systemd.extraConfig = "DefaultLimitNOFILE=524288"; # this currently does not work
   security.pam.loginLimits = [{
     domain = "sqibo";
     type = "hard";
