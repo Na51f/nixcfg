@@ -11,6 +11,7 @@
     ./niri.nix
     ./security.nix
     ./games.nix
+    ./applications.nix
   ];
 
   programs = {
