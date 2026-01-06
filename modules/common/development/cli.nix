@@ -9,6 +9,7 @@
   environment = {
     systemPackages = with pkgs; [
       bat
+      bitwarden-cli
       btop
       claude-code
       cursor-cli
