@@ -1,8 +1,14 @@
-# Hosts ## NixOS
+# Hosts 
+
+## NixOS
 
 ### Hapalo (Gaming PC)
 - Named after the blue-ringed octopus (hapalochlaena) due to colorful RGB and deadly performance
 - Runs NixOS and dual boots with Windows for games that do not support Linux.
+
+#### Lunalata (Windows Gaming)
+- Named after the second half of the greater blue-ringed octopus' name (hapalochlaena lunalata).
+- Hapalo when dual-booted into Windows.
 
 ### Loligo (Laptop)
 - Named after the common squid (loligo vulgaris) since this is a run-of-the-mill but portable machine as common squids are pretty small.
@@ -13,7 +19,11 @@ These will not be in the hosts directory but may be referenced by name.
 
 ## Sepia (iPad)
 - Named after the common cuttlefish (sepia officinalis) since iPads are more creative machines and sepia is also the name of the ink cuttlefishes produce, which is widely used by artists.
-- Will only run iPadOS.
+- On iPadOS.
+
+## Idiosepius (iPhone Air)
+- Named after the two-toned pygmy squid (Idiosepius pygmaeus) because it's light and fits the naming scheme with the other Apple products.
+- On iOS.
 
 # How to run
 `./update.sh`
